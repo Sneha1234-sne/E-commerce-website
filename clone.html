@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store</title>
+    <link rel="stylesheet" href="clone-style.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>Grocery Store</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#section1">Fruits</a></li>
+                <li><a href="#section2">Vegetables</a></li>
+                <li><a href="#section3">Dairy</a></li>
+                <li><a href="#section4">Snacks</a></li>
+                <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="section1" class="product-section">
+            <h2>Fresh Fruits</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://media.istockphoto.com/id/1344927287/photo/fresh-red-apples-in-wooden-box.webp?a=1&b=1&s=612x612&w=0&k=20&c=CECwQC_9DgLI772jetVTZ2V-9jjKPSzvgHKWl7ngAkU="
+                        alt="Apple">
+                    <h3>Apple</h3>
+                    <p>$2.5 each</p>
+                    <button class="add-to-cart" data-name="Apple" data-price="2.5">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZnJ1aXR8ZW58MHx8MHx8fDA%3D"
+                        alt="Cherry">
+                    <h3>Cherry</h3>
+                    <p>$3.5 each</p>
+                    <button class="add-to-cart" data-name="Cherry" data-price="3.5">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://media.istockphoto.com/id/1343517547/photo/bunch-of-fresh-bananas-hanging-against-a-turquoise-colored-wooden-wall.webp?a=1&b=1&s=612x612&w=0&k=20&c=Klc-nOmbFr7tlUU558Cg6CHmE5MoWxtwLuPtvQPsIxU="
+                        alt="Banana">
+                    <h3>Banana</h3>
+                    <p>$1.2 each</p>
+                    <button class="add-to-cart" data-name="Banana" data-price="1.2">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="section2" class="product-section">
+            <h2>Fresh Vegetables</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://media.istockphoto.com/id/1220226211/photo/homegrown-carrots.webp?a=1&b=1&s=612x612&w=0&k=20&c=QOMpHq9LxPctavo5_dkeixgiR3_Z3w4rCsMuOPypTGg="
+                        alt="Carrot">
+                    <h3>Carrot</h3>
+                    <p>$1.5 each</p>
+                    <button class="add-to-cart" data-name="Carrot" data-price="1.5">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://plus.unsplash.com/premium_photo-1666823706428-5d93ae18c1c0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHVtcGtpbnxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Pumpkin">
+                    <h3>Pumpkin</h3>
+                    <p>$2.5 each</p>
+                    <button class="add-to-cart" data-name="Pumpkin" data-price="2.5">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://media.istockphoto.com/id/1360836158/photo/broccoli.webp?a=1&b=1&s=612x612&w=0&k=20&c=Kd6eDGRF8d_lgv3SMf-7OYxcaG1nCmGOj3cIAwI0_HY="
+                        alt="Broccoli">
+                    <h3>Broccoli</h3>
+                    <p>$2.0 each</p>
+                    <button class="add-to-cart" data-name="Broccoli" data-price="2.0">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="section3" class="product-section">
+            <h2>Dairy Products</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://images.unsplash.com/photo-1529258283598-8d6fe60b27f4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG1pbGt8ZW58MHx8MHx8fDA%3D"
+                        alt="Milk">
+                    <h3>Milk</h3>
+                    <p>$1.8 per liter</p>
+                    <button class="add-to-cart" data-name="Milk" data-price="1.8">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://plus.unsplash.com/premium_photo-1690214491960-d447e38d0bd0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Cake">
+                    <h3>Cake</h3>
+                    <p>$4.7 each</p>
+                    <button class="add-to-cart" data-name="Cake" data-price="4.7">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://plus.unsplash.com/premium_photo-1687975124229-e3ae49ea2c20?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2hlZXNlfGVufDB8fDB8fHww"
+                        alt="Cheese">
+                    <h3>Cheese</h3>
+                    <p>$3.0 per block</p>
+                    <button class="add-to-cart" data-name="Cheese" data-price="3.0">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="section4" class="product-section">
+            <h2>Snacks</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://plus.unsplash.com/premium_photo-1672753747124-2bd4da9931fa?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2hpcHN8ZW58MHx8MHx8fDA%3D"
+                        alt="Chips">
+                    <h3>Chips</h3>
+                    <p>$1.5 per pack</p>
+                    <button class="add-to-cart" data-name="Chips" data-price="1.5">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://images.unsplash.com/photo-1501747188-61c00b3d8ba0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNuYWNrc3xlbnwwfHwwfHx8MA%3D%3D"
+                        alt="choco lava">
+                    <h3>Choco lava</h3>
+                    <p>$3.9 each</p>
+                    <button class="add-to-cart" data-name="Choco lava" data-price="3.9">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://plus.unsplash.com/premium_photo-1670895802275-ed748ced4309?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29va2llc3xlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Cookies">
+                    <h3>Cookies</h3>
+                    <p>$2.0 per pack</p>
+                    <button class="add-to-cart" data-name="Cookies" data-price="2.0">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <a href="clone-info.html">
+                <button id="place-order">Place Order</button>
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Grocery Store. All rights reserved.</p>
+    </footer>
+
+    <script src="clone-script.js"></script>
+    <!--<script>
+        // Get cart elements
+        const cartCount = document.getElementById("cart-count");
+        const cartItemsList = document.getElementById("cart-items");
+
+        // Cart array to store items
+        let cart = [];
+
+        // Function to add item to cart
+        function addToCart(name, price) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            // Update cart count
+            updateCartCount();
+            // Display cart popup
+            showCartPopup();
+        }
+
+        // Function to update cart count
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        // Function to show cart popup with total
+        function showCartPopup() {
+            // Calculate total price
+            const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+            // Create popup element
+            const popup = document.createElement("div");
+            popup.classList.add("cart-popup");
+            popup.innerHTML = `
+        <h3>Cart Summary</h3>
+        <ul>
+            ${cart.map(item => `<li>${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}</li>`).join('')}
+        </ul>
+        <p><strong>Total Price:</strong> $${totalPrice.toFixed(2)}</p>
+        <button onclick="closePopup()">Close</button>
+    `;
+
+            document.body.appendChild(popup);
+
+            // Remove popup after a few seconds
+            setTimeout(() => closePopup(), 5000);
+        }
+
+        // Function to close popup
+        function closePopup() {
+            const popup = document.querySelector(".cart-popup");
+            if (popup) {
+                popup.remove();
+            }
+        }
+
+        // Attach event listeners to "Add to Cart" buttons
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", (event) => {
+                const name = button.getAttribute("data-name");
+                const price = parseFloat(button.getAttribute("data-price"));
+                addToCart(name, price);
+            });
+        });
+
+    </script>
+</body>-->
+
+</html>

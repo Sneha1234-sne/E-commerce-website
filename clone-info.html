@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        /* Reset and Basic Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #8ab878, #8ab878);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #0a0a0a;
+        }
+
+        /* Navbar Styling */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(74, 119, 79, 0.95);
+            padding: 10px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo h1 {
+            color: #363535;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: #313131;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #cfd8dc;
+        }
+
+        /* Container Styling */
+        .container {
+            background-color: rgba(74, 119, 79, 0.95);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-top: 100px;
+            transform: translateY(20px);
+            animation: slideIn 0.7s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1b1d1b;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #242524;
+            font-size: 14px;
+        }
+
+        .required::after {
+            content: " *";
+            color: #161616;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 12px;
+            font-size: 15px;
+            border: 1px solid #18411a;
+            border-radius: 10px;
+            background: #8fc496;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4a774f;
+            box-shadow: 0 0 8px rgba(74, 119, 79, 0.2);
+            outline: none;
+        }
+
+        /* Items List Styling */
+        .items-list {
+            margin-top: 20px;
+        }
+
+        .items-list h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .items-list .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .total-price {
+            font-weight: bold;
+            color: #333;
+            text-align: right;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #233025;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 12px rgba(74, 119, 79, 0.3);
+        }
+
+        button:hover {
+            background-color: #3f6843;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 14px rgba(63, 104, 67, 0.3);
+        }
+
+        button:active {
+            background-color: #365b3d;
+            transform: translateY(0);
+        }
+
+        /* Modal Popup */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #444343;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            color: #4a774f;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .modal-content p {
+            color: #9c9999;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .close-btn {
+            background-color: #4a774f;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #3f6843;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            form label,
+            .modal-content h2,
+            .modal-content p {
+                font-size: 13px;
+            }
+
+            button,
+            .close-btn {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Grocery Store</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="clone.html">Home</a></li>
+                    <!--<li><a href="contact.html">Contact</a></li>-->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Order Form</h1>
+        <form id="orderForm">
+            <div class="items-list">
+                <h3>Selected Items</h3>
+                <div id="selectedItemsList"></div>
+                <p id="totalPrice" class="total-price">Total: $0.00</p>
+            </div>
+
+            <label for="name" class="required">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="address" class="required">Delivery Address:</label>
+            <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+
+            <label for="phoneNumber" class="required">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+
+            <label for="state" class="required">State/Province:</label>
+            <input type="text" id="state" name="state" placeholder="Enter your state or province" required>
+
+            <label for="postalCode" class="required">Postal Code:</label>
+            <input type="text" id="postalCode" name="postalCode" placeholder="Enter your postal code" required>
+
+            <label for="paymentMethod" class="required">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="">Select Payment Method</option>
+                <option value="creditCard">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="cash">Cash on Delivery</option>
+            </select>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h2>Order Confirmed!</h2>
+            <p>Your order has been successfully placed. Thank you for shopping with us!</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            showModal();
+        });
+
+        function showModal() {
+            document.getElementById("confirmationModal").classList.add("show");
+        }
+
+        function closeModal() {
+            document.getElementById("confirmationModal").classList.remove("show");
+        }
+
+        const selectedItemsList = document.getElementById("selectedItemsList");
+        const totalPriceElement = document.getElementById("totalPrice");
+
+        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+        function displaySelectedItems() {
+            selectedItemsList.innerHTML = "";
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotalPrice = item.price * item.quantity;
+                total += itemTotalPrice;
+
+                const itemElement = document.createElement("div");
+                itemElement.classList.add("item");
+                itemElement.innerHTML = `<span>${item.name} x${item.quantity}</span><span>$${itemTotalPrice.toFixed(2)}</span>`;
+                selectedItemsList.appendChild(itemElement);
+            });
+
+            totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        displaySelectedItems();
+    </script>
+</body>
+
+</html>
